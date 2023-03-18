@@ -3,9 +3,10 @@ import './index.css';
 
 interface TProps {
   productName: string;
+  limit: number;
 }
 
-export const ProductCard = ({ productName }: TProps) => {
+export const ProductCard = ({ productName, limit }: TProps) => {
   const [count, setCount] = useState(0);
 
   const addCount = () => {
@@ -20,9 +21,13 @@ export const ProductCard = ({ productName }: TProps) => {
     <div className="card_wrapper">
       <span>{productName}</span>
       <div className="button_section">
-        <button onClick={deleteCount}>delete</button>
+        <button onClick={deleteCount} disabled={count === 0}>
+          delete
+        </button>
         <span>{count}</span>
-        <button onClick={addCount}>add</button>
+        <button onClick={addCount} disabled={count >= limit}>
+          add
+        </button>
       </div>
     </div>
   );
