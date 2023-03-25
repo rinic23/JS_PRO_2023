@@ -1,20 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-import { Description } from './Description';
+import { ProductCard } from './ProductCard';
+import { CustomInput } from './CustomInput';
 
-const initData = {
-  id: '1234',
-  link: 'https://reactjs.org',
-};
+const productArray = [
+  {
+    id: 1,
+    name: 'Apple',
+  },
+  {
+    id: 2,
+    name: 'Orange',
+  },
+  {
+    id: 3,
+    name: 'Tomato',
+  },
+];
 
 function App() {
+  const [limit, setLimit] = useState(10);
+
+  const addLimit = () => {
+    setLimit(limit + 1);
+  };
+
+  const deleteLimit = () => {
+    setLimit(limit - 1);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Description initData={initData} name="Egor" />
-      </header>
+      <CustomInput />
+      <button onClick={deleteLimit} disabled={limit === 0}>
+        delete
+      </button>
+      <span>{limit}</span>
+      <button onClick={addLimit}>add</button>
+      {productArray.map(({ id, name }) => {
+        return <div key={id}>{name}</div>;
+      })}
     </div>
   );
 }
