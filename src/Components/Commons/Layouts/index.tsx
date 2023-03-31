@@ -11,7 +11,7 @@ export const Layout = ({ children }: TProps) => {
   return (
     <div className={styles.postPageWrapper}>
       <Header />
-      {children}
+      <div className={styles.contentWrapper}>{children}</div>
       <Footer />
     </div>
   );
