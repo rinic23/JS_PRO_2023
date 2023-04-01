@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CustomInput } from '../../Commons/CustomInput';
 import styles from './AuthForm.module.scss';
 
@@ -21,6 +21,12 @@ export const AuthForm = () => {
       console.log('Auth');
     }
   };
+
+  useEffect(() => {
+    if (isError && formState.password.length > 5) {
+      setIsError(false);
+    }
+  }, [formState.password]);
 
   return (
     <div>
