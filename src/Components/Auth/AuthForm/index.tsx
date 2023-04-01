@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CustomInput } from '../../Commons/CustomInput';
+import styles from './AuthForm.module.scss';
 
 export const AuthForm = () => {
   const [formState, setFormState] = useState({
@@ -36,6 +37,9 @@ export const AuthForm = () => {
         type="password"
         handleChangeFieldForm={handleChangeFieldForm}
       />
+      <span className={`${styles.errorTitle} ${isError ? styles.hasError : styles.noError}`}>
+        Пароль должен быть больше 5 символов
+      </span>
       <button onClick={handleFinishForm}>AUTH</button>
     </div>
   );
