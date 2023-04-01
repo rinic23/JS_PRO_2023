@@ -7,11 +7,11 @@ interface IProps {
   type?: React.HTMLInputTypeAttribute;
 }
 
-export const CustomInput = () => {
+export const CustomInput = ({ value, fieldLabel, fieldName, type }: IProps) => {
   return (
     <div style={{ display: 'grid' }}>
-      <span>{inputValues}</span>
-      <input id="input" value={inputValues} onChange={inputChange} type={} />
+      <span>{fieldLabel}</span>
+      <input value={value} type={type} />
     </div>
   );
 };
