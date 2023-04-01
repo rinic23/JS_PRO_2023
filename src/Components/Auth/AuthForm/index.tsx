@@ -7,8 +7,18 @@ export const AuthForm = () => {
     password: '',
   });
 
+  const [isError, setIsError] = useState(false);
+
   const handleChangeFieldForm = (fieldName: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormState((prevValues) => ({ ...prevValues, [fieldName]: e.target.value }));
+  };
+
+  const handleFinishForm = () => {
+    if (formState.password.length < 5) {
+      setIsError(true);
+    } else {
+      console.log('Auth');
+    }
   };
 
   return (
@@ -26,6 +36,7 @@ export const AuthForm = () => {
         type="password"
         handleChangeFieldForm={handleChangeFieldForm}
       />
+      <button onClick={handleFinishForm}>AUTH</button>
     </div>
   );
 };
