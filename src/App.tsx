@@ -9,12 +9,6 @@ import { ProductsPage } from './Containers/ProductsPage';
 import { routes } from './utils/constants/routes';
 
 function App() {
-  console.log('APP RENDER');
-
-  useEffect(() => {
-    console.log('COMPONETDIDMOUNT APP');
-  }, []);
-
   return (
     <div className={styles.wrapper}>
       <Layout>

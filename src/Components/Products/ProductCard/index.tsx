@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './index.css';
 
 interface TProps {
   productName: string;
 }
 
-export const ProductCard = ({ productName }: TProps) => {
+const Product = ({ productName }: TProps) => {
   const [count, setCount] = useState(0);
 
   const addCount = () => {
@@ -17,10 +17,6 @@ export const ProductCard = ({ productName }: TProps) => {
   };
 
   console.log('PRODUCT CARD RENDER');
-
-  useEffect(() => {
-    console.log('COMPONETDIDMOUNT PRODUCT');
-  }, []);
 
   return (
     <div className="card_wrapper">
@@ -35,3 +31,5 @@ export const ProductCard = ({ productName }: TProps) => {
     </div>
   );
 };
+
+export const ProductCard = React.memo(Product);
