@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import styles from './App.module.scss';
 import { Layout } from './Components/Commons/Layouts';
@@ -9,6 +9,12 @@ import { ProductsPage } from './Containers/ProductsPage';
 import { routes } from './utils/constants/routes';
 
 function App() {
+  console.log('APP RENDER');
+
+  useEffect(() => {
+    console.log('COMPONETDIDMOUNT APP');
+  }, []);
+
   return (
     <div className={styles.wrapper}>
       <Layout>

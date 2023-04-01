@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
 
 interface TProps {
@@ -15,6 +15,12 @@ export const ProductCard = ({ productName }: TProps) => {
   const deleteCount = () => {
     setCount((prevValue) => prevValue - 1);
   };
+
+  console.log('PRODUCT CARD RENDER');
+
+  useEffect(() => {
+    console.log('COMPONETDIDMOUNT PRODUCT');
+  }, []);
 
   return (
     <div className="card_wrapper">
