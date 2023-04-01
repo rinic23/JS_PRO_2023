@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import styles from './App.module.scss';
 import { Layout } from './Components/Commons/Layouts';
@@ -7,6 +7,7 @@ import { PostPage } from './Containers/PostPage';
 import { PostsPage } from './Containers/PostsPage';
 import { ProductsPage } from './Containers/ProductsPage';
 import { routes } from './utils/constants/routes';
+import { AuthPage } from './Containers/AuthPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path={routes.MAIN} element={<MainPage />} />
           <Route path={routes.PRODUCTS} element={<ProductsPage />} />
+          <Route path={routes.AUTH} element={<AuthPage />} />
           <Route path={routes.POSTS}>
             <Route element={<PostsPage />} index />
             <Route path=":id" element={<PostPage />} />

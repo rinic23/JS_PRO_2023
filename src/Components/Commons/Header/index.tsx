@@ -12,6 +12,7 @@ export const Header = () => {
         One post Page
       </Link>
       <Link to={routes.PRODUCTS}>Products Page</Link>
+      <Link to={routes.AUTH}>Auth page</Link>
     </header>
   );
 };
