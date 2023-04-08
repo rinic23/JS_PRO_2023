@@ -18,3 +18,6 @@ const slice = createSlice({
     },
   },
 });
+
+export const { reducer: userDataReducer, name: userDataNameReducer, actions } = slice;
+export const { setUserData } = actions;

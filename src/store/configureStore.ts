@@ -1,6 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { userDataNameReducer, userDataReducer } from './userData';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    [userDataNameReducer]: userDataReducer,
+  },
   devTools: true,
 });
