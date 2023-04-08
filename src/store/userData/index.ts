@@ -1,14 +1,14 @@
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface IUserData {
-  name: string;
+  email: string;
   token: string;
 }
 
 const slice = createSlice({
   name: 'userData',
   initialState: {
-    name: '',
+    email: '',
     token: '',
   },
   reducers: {
