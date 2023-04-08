@@ -1,0 +1,27 @@
+import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
+
+interface IProduct {
+  name: string;
+  count: number;
+}
+
+interface IProductState {
+  data: IProduct[];
+}
+
+const initialState: IProductState = {
+  data: [],
+};
+
+const slice = createSlice({
+  name: 'products',
+  initialState,
+  reducers: {
+    addProduct(state, { payload }: PayloadAction<IProduct>) {
+      return { ...state, data: [...state.data, payload] };
+    },
+  },
+});
+
+export const { reducer: userDataReducer, name: userDataNameReducer, actions } = slice;
+export const { addProduct } = actions;
