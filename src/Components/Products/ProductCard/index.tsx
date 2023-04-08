@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './index.css';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../../store/products';
 
 interface TProps {
   productName: string;
@@ -7,6 +9,7 @@ interface TProps {
 
 const Product = ({ productName }: TProps) => {
   const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
 
   const addCount = () => {
     setCount((prevValue) => prevValue + 1);
@@ -16,7 +19,9 @@ const Product = ({ productName }: TProps) => {
     setCount((prevValue) => prevValue - 1);
   };
 
-  console.log('PRODUCT CARD RENDER');
+  const addProductHandler = () => {
+    dispatch(addProduct({ name: productName, count }));
+  };
 
   return (
     <div className="card_wrapper">
@@ -29,7 +34,7 @@ const Product = ({ productName }: TProps) => {
         <button onClick={addCount}>add</button>
       </div>
       <div>
-        <button>добавить в корзину</button>
+        <button onClick={addProductHandler}>добавить в корзину</button>
       </div>
     </div>
   );
