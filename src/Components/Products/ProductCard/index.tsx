@@ -28,6 +28,9 @@ const Product = ({ productName }: TProps) => {
         <span>{count}</span>
         <button onClick={addCount}>add</button>
       </div>
+      <div>
+        <button>добавить в корзину</button>
+      </div>
     </div>
   );
 };
