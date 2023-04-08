@@ -23,5 +23,5 @@ const slice = createSlice({
   },
 });
 
-export const { reducer: userDataReducer, name: userDataNameReducer, actions } = slice;
+export const { reducer: productsDataReducer, name: productsDataNameReducer, actions } = slice;
 export const { addProduct } = actions;
