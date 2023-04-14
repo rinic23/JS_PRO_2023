@@ -3,17 +3,17 @@ import { CustomInput } from '../../Commons/CustomInput';
 import styles from './AuthForm.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserData } from '../../../store/userData';
+import { useGetPostsQuery } from '../../../store/query/posts';
 
 export const AuthForm = () => {
   const dispatch = useDispatch();
-  const data = useSelector((state: any) => state.userData);
-  console.log(data);
 
   const [formState, setFormState] = useState({
     email: '',
     password: '',
   });
-
+  // const { data } = useGetPostsQuery(null);
+  console.log(data);
   const [isError, setIsError] = useState(false);
 
   const handleChangeFieldForm = (fieldName: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
