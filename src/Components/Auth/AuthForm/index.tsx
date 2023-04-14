@@ -13,7 +13,7 @@ export const AuthForm = () => {
     password: '',
   });
   // const { data } = useGetPostsQuery(null);
-  console.log(data);
+  // console.log(data);
   const [isError, setIsError] = useState(false);
 
   const handleChangeFieldForm = (fieldName: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
