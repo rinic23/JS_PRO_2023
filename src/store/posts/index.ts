@@ -39,7 +39,7 @@ const slice = createSlice({
     builder.addCase(getPostList.rejected, (state) => {
       return {
         ...state,
-        posts: { ...state.posts, isLoading: false, isError: true, isSuccess: false, data: [] },
+        posts: { isLoading: false, isError: true, isSuccess: false, data: [] },
       };
     });
   },
