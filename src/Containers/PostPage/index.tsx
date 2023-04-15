@@ -1,12 +1,22 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getPostById } from '../../store/posts/effects';
+import {
+  getPostByIdIsError,
+  getPostByIdIsLoading,
+  getPostByIdIsSuccess,
+  getPostByIdSelector,
+} from '../../store/posts/selectors';
 
 export const PostPage = () => {
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const post = useSelector(getPostByIdSelector);
+  const isSuccess = useSelector(getPostByIdIsSuccess);
+  const isError = useSelector(getPostByIdIsError);
+  const isLoading = useSelector(getPostByIdIsLoading);
 
   const goBack = () => {
     navigate('/posts/5657');
@@ -23,10 +33,16 @@ export const PostPage = () => {
   }, []);
 
   return (
-    <div>
-      <span>{`Hi i am post number - ${params.id ?? ''} `}</span>
-      <button onClick={goBack}>Go back</button>
-      <button onClick={goForward}>Go forward</button>
-    </div>
+    <>
+      {isError && <span>Error</span>}
+      {isSuccess && post && (
+        <div>
+          <span>{`Hi i am post number - ${params.id ?? ''} `}</span>
+          <button onClick={goBack}>Go back</button>
+          <button onClick={goForward}>Go forward</button>
+        </div>
+      )}
+      {isLoading && <span>Loading</span>}
+    </>
   );
 };
