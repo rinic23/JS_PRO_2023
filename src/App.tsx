@@ -33,22 +33,8 @@ function App() {
           />
           <Route path={routes.AUTH} element={<AuthPage />} />
           <Route path={routes.POSTS}>
-            <Route
-              element={
-                <CheckAuth>
-                  <PostsPage />
-                </CheckAuth>
-              }
-              index
-            />
-            <Route
-              path=":id"
-              element={
-                <CheckAuth>
-                  <PostPage />
-                </CheckAuth>
-              }
-            />
+            <Route element={<PostsPage />} index />
+            <Route path=":id" element={<PostPage />} />
           </Route>
           <Route />
         </Routes>
