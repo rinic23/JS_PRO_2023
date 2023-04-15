@@ -1,9 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getPostList } from './effects';
+import { getPostById, getPostList } from './effects';
 
 interface IPostsState {
   posts: {
     data: any[];
+    isSuccess: boolean;
+    isLoading: boolean;
+    isError: boolean;
+  };
+  currentPost: {
+    data: any;
     isSuccess: boolean;
     isLoading: boolean;
     isError: boolean;
@@ -13,6 +19,12 @@ interface IPostsState {
 const initialState: IPostsState = {
   posts: {
     data: [],
+    isSuccess: false,
+    isLoading: false,
+    isError: false,
+  },
+  currentPost: {
+    data: null,
     isSuccess: false,
     isLoading: false,
     isError: false,
@@ -40,6 +52,31 @@ const slice = createSlice({
       return {
         ...state,
         posts: { isLoading: false, isError: true, isSuccess: false, data: [] },
+      };
+    });
+    // GET POST BY ID
+    builder.addCase(getPostById.pending, (state) => {
+      return {
+        ...state,
+        currentPost: { ...state.currentPost, isLoading: true, isError: false, isSuccess: false },
+      };
+    });
+    builder.addCase(getPostById.fulfilled, (state, { payload }) => {
+      return {
+        ...state,
+        currentPost: {
+          ...state.currentPost,
+          isLoading: false,
+          isError: false,
+          isSuccess: true,
+          data: payload,
+        },
+      };
+    });
+    builder.addCase(getPostById.rejected, (state) => {
+      return {
+        ...state,
+        currentPost: { isLoading: false, isError: true, isSuccess: false, data: null },
       };
     });
   },
