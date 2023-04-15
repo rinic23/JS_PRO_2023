@@ -13,7 +13,7 @@ export const getPostList = createAsyncThunk('/post/list', async (_, { rejectWith
 
 export const getPostById = createAsyncThunk(
   '/post/byId',
-  async (id: number, { rejectWithValue }) => {
+  async (id: string, { rejectWithValue }) => {
     try {
       const response = await networkInstance.get(`/posts/${id}`);
       console.log(response);
