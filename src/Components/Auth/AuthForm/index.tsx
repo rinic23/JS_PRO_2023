@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useEffect, useState } from 'react';
 import { CustomInput } from '../../Commons/CustomInput';
 import styles from './AuthForm.module.scss';
