@@ -38,8 +38,8 @@ export const PostPage = () => {
       {isSuccess && post && (
         <div>
           <span>{`Hi i am post number - ${params.id ?? ''} `}</span>
-          <button onClick={goBack}>Go back</button>
-          <button onClick={goForward}>Go forward</button>
+          <span>{post.title}</span>
+          <span>{post.body}</span>
         </div>
       )}
       {isLoading && <span>Loading</span>}
