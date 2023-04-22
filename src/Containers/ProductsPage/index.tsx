@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { ProductCard } from '../../Components/Products/ProductCard';
 import styles from './ProductsPage.module.scss';
 import { useSelector } from 'react-redux';
 import { getProducts } from '../../store/products/selectors';
+
+const calculateValue = () => {
+  let result = 0;
+  for (let i = 0; i < 1000000000; i++) {
+    result = result + 1;
+  }
+  return result;
+};
 
 export const ProductsPage = () => {
   const [count, setCount] = useState(0);
@@ -11,6 +19,12 @@ export const ProductsPage = () => {
   const handleButtonClick = () => {
     setCount(count + 1);
   };
+
+  const value = useMemo(() => {
+    console.log(count);
+    return calculateValue();
+  }, []);
+  console.log(value);
 
   return (
     <div className={styles.productsWrapper}>

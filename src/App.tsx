@@ -23,14 +23,7 @@ function App() {
               </CheckAuth>
             }
           />
-          <Route
-            path={routes.PRODUCTS}
-            element={
-              <CheckAuth>
-                <ProductsPage />
-              </CheckAuth>
-            }
-          />
+          <Route path={routes.PRODUCTS} element={<ProductsPage />} />
           <Route path={routes.AUTH} element={<AuthPage />} />
           <Route path={routes.POSTS}>
             <Route element={<PostsPage />} index />
