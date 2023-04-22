@@ -18,15 +18,21 @@ export const PostsPage = () => {
   const isError = useSelector(getPostListIsError);
   const isLoading = useSelector(getPostListIsLoading);
 
+  const scrollUpHandler = () => {
+    if (ref.current) {
+      ref.current.scroll(0, 0);
+    }
+  };
+
   useEffect(() => {
     dispatch(getPostList());
   }, []);
 
-  console.log(ref);
-
   return (
     <div className={styles.postList} ref={ref}>
-      <button className={styles.scrollButton}>Scroll up</button>
+      <button className={styles.scrollButton} onClick={scrollUpHandler}>
+        Scroll up
+      </button>
       {isSuccess &&
         posts.length > 0 &&
         posts.map(({ title, id, body }) => <PostCard key={id} title={title} body={body} id={id} />)}
