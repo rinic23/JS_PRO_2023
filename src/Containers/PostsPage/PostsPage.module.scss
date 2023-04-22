@@ -1,4 +1,14 @@
 .postList {
   display: grid;
   gap: 20px;
+  height: 500px;
+  overflow: scroll;
+  position: relative;
+  .scrollButton {
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 }

@@ -24,6 +24,7 @@ export const PostsPage = () => {
 
   return (
     <div className={styles.postList}>
+      <button className={styles.scrollButton}>Scroll up</button>
       {isSuccess &&
         posts.length > 0 &&
         posts.map(({ title, id, body }) => <PostCard key={id} title={title} body={body} id={id} />)}
