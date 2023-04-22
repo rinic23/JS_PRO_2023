@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { CustomInput } from '../../Commons/CustomInput';
 import styles from './AuthForm.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,13 +13,15 @@ export const AuthForm = () => {
     email: '',
     password: '',
   });
-  // const { data } = useGetPostsQuery(null);
-  // console.log(data);
+
   const [isError, setIsError] = useState(false);
 
-  const handleChangeFieldForm = (fieldName: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormState((prevValues) => ({ ...prevValues, [fieldName]: e.target.value }));
-  };
+  const handleChangeFieldForm = useCallback(
+    (fieldName: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFormState((prevValues) => ({ ...prevValues, [fieldName]: e.target.value }));
+    },
+    [],
+  );
 
   const handleFinishForm = () => {
     if (formState.password.length < 5) {

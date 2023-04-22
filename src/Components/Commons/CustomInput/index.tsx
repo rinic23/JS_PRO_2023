@@ -8,13 +8,8 @@ interface IProps {
   handleChangeFieldForm: (fieldName: string) => (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const CustomInput = ({
-  value,
-  fieldLabel,
-  fieldName,
-  type,
-  handleChangeFieldForm,
-}: IProps) => {
+const Component = ({ value, fieldLabel, fieldName, type, handleChangeFieldForm }: IProps) => {
+  console.log('render', fieldLabel);
   return (
     <div style={{ display: 'grid' }}>
       <span>{fieldLabel}</span>
@@ -22,3 +17,5 @@ export const CustomInput = ({
     </div>
   );
 };
+
+export const CustomInput = React.memo(Component);
