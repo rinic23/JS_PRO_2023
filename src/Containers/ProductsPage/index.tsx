@@ -21,7 +21,6 @@ export const ProductsPage = () => {
   };
 
   const value = useMemo(() => {
-    console.log(count);
     return calculateValue();
   }, []);
   console.log(value);
