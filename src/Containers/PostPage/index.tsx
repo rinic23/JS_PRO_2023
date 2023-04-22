@@ -8,23 +8,16 @@ import {
   getPostByIdIsSuccess,
   getPostByIdSelector,
 } from '../../store/posts/selectors';
+import { useToggle } from '../../utils/hooks/useToggle';
 
 export const PostPage = () => {
   const params = useParams();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const post = useSelector(getPostByIdSelector);
   const isSuccess = useSelector(getPostByIdIsSuccess);
   const isError = useSelector(getPostByIdIsError);
   const isLoading = useSelector(getPostByIdIsLoading);
-
-  const goBack = () => {
-    navigate('/posts/5657');
-  };
-
-  const goForward = () => {
-    navigate('/');
-  };
+  const { isVisible, open, close, toggle } = useToggle(false);
 
   useEffect(() => {
     if (params.id) {
@@ -34,15 +27,22 @@ export const PostPage = () => {
 
   return (
     <>
-      {isError && <span>Error</span>}
-      {isSuccess && post && (
-        <div>
-          <span>{`Hi i am post number - ${params.id ?? ''} `}</span>
-          <span>{post.title}</span>
-          <span>{post.body}</span>
-        </div>
+      <button onClick={toggle}>TOGGLE</button>
+      <button onClick={open}>OPEN</button>
+      <button onClick={close}>CLOSE</button>
+      {isVisible && (
+        <>
+          {isError && <span>Error</span>}
+          {isSuccess && post && (
+            <div>
+              <span>{`Hi i am post number - ${params.id ?? ''} `}</span>
+              <span>{post.title}</span>
+              <span>{post.body}</span>
+            </div>
+          )}
+          {isLoading && <span>Loading</span>}
+        </>
       )}
-      {isLoading && <span>Loading</span>}
     </>
   );
 };
