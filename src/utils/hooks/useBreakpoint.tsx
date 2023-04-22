@@ -15,7 +15,10 @@ export const useBreakpoint = (breakpoint: number) => {
     };
 
     window.addEventListener('resize', checkResize);
-  }, [breakpoint]);
+    return () => {
+      window.removeEventListener('resize', checkResize);
+    };
+  }, [breakpoint, isBreakpoint]);
 
   return isBreakpoint;
 };
