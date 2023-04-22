@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { PostCard } from '../../Components/Posts/PostCard';
 import styles from './PostsPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,7 +12,7 @@ import {
 
 export const PostsPage = () => {
   const dispatch = useDispatch();
-
+  const ref = useRef<HTMLDivElement>(null);
   const posts = useSelector(getPostListSelector);
   const isSuccess = useSelector(getPostListIsSuccess);
   const isError = useSelector(getPostListIsError);
@@ -22,8 +22,10 @@ export const PostsPage = () => {
     dispatch(getPostList());
   }, []);
 
+  console.log(ref);
+
   return (
-    <div className={styles.postList}>
+    <div className={styles.postList} ref={ref}>
       <button className={styles.scrollButton}>Scroll up</button>
       {isSuccess &&
         posts.length > 0 &&
